@@ -1,0 +1,30 @@
+name: Tu Dong Tai Va Giai Ma
+on:
+  workflow_dispatch:
+
+jobs:
+  xuly:
+    runs-on: windows-latest
+    steps:
+      - name: Lay file lua cua ban
+        uses: actions/checkout@v4
+
+      - name: Cai Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: May chu tu tai Tool va chay
+        run: |
+          # Thay link GitHub cua Tool vao dong ben duoi
+          git clone https://github.com/LINK-CUA-TOOL/Deobfuscator-Luraph-V15.git tool_giai_ma
+          cd tool_giai_ma
+          npm install
+          Copy-Item ..\banana_stage_1.lua -Destination .
+          node deob.js "banana_stage_1.lua"
+
+      - name: Tra file ket qua ve dien thoai
+        uses: actions/upload-artifact@v4
+        with:
+          name: Ket-Qua-Giai-Ma
+          path: tool_giai_ma/
