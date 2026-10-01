@@ -16,8 +16,7 @@ jobs:
 
       - name: May chu tu tai Tool va chay
         run: |
-          # Thay link GitHub cua Tool vao dong ben duoi
-          git clone https://github.com/LINK-CUA-TOOL/Deobfuscator-Luraph-V15.git tool_giai_ma
+          git clone https://github.com/caomod2077/Deobfuscator-Luraph-V15.git tool_giai_ma
           cd tool_giai_ma
           npm install
           Copy-Item ..\banana_stage_1.lua -Destination .
@@ -27,4 +26,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: Ket-Qua-Giai-Ma
-          path: tool_giai_ma/
+          path: tool_giai_ma/output/
+          
